@@ -49,11 +49,12 @@ double doIntegral(){
 
 int main(int argc, char **argv){
 
-  int nloops = atoi(argv[5]);
+  int nloops = atoi(argv[1]);
   int i;
+  double sum = 0;
 
   for (i=0; i < nloops; i++){
-    double sum = doIntegral();
+    sum = doIntegral();
   
     printf("%f\n", sum);
   }

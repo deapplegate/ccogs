@@ -14,7 +14,7 @@
 # $(HOME)/bin, etc.).
 INSTALL_DIR       := ./
 
-BIN_GRID           := $(INSTALL_DIR)/mAp_grid.x
+BIN_GRID           := $(INSTALL_DIR)/mAp_grid.x $(INSTALL_DIR)/gpuintegral.x
 
 
 # SDK_INSTALL_PATH and CUDA_INSTALL_PATH are probably the more significant
@@ -26,7 +26,7 @@ BIN_GRID           := $(INSTALL_DIR)/mAp_grid.x
 CUDA_SDK  := ${HOME}/CUDA/SDK_4.0/
 
 ### You will need to edit this line to point to your own cuda installation
-CUDA_INSTALL_PATH := /opt/cuda
+CUDA_INSTALL_PATH := /opt/cuda-6.0
 
 
 # While the INCLUDES and LIBS flags are dependent on the install path, there may 
@@ -60,6 +60,9 @@ all:  ${BIN_GRID}
 
 $(BIN_GRID): $(CPP_OBJS) $(CU_OBJS_GRID)
 	$(CXX) -fPIC -o $(BIN_GRID) $(CU_OBJS_GRID) $(LDFLAGS) $(INCLUDES) $(LIBS)
+
+gpuintegral: gpuintegral.cu_o
+	$(CXX) -fPIC -o gpuintegral gpuintegral.cu_o $(LDFLAGS) $(INCLUDES) $(LIBS)
 
 
 clean:
